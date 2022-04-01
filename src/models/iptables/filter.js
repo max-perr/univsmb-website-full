@@ -2,7 +2,7 @@ var sql = require('../db/db_mariadb');
 
 var connexion = null;
 
-class Nat {
+class Filter {
   constructor(req, res) {
     this.req = req;
     this.res = res;
@@ -15,22 +15,22 @@ class Nat {
 
   }
 
-  async getNatList() {
+  async getFilterList() {
     try {
-      this.natList = await connexion.query("SELECT idNat, nameNat, port, ipAddress, type FROM nat_rules");
+      this.filterList = await connexion.query("SELECT idNat, name, portSrc, portDst,ipAddressSrc, ipAddressDst, type FROM nat_filter");
 
-      return this.natList;
+      return this.filterList;
     }
     catch (anError) {
-      console.log('Error to get nat list !');
+      console.log('Error to get filter list !');
 
       // See error from SQL Client
       //console.log(anError);
     }
   }
-  getNat() {
-    return this.natList;
+  getfilter() {
+    return this.filerList;
   }
 }
 
-module.exports = Nat;
+module.exports = Filter;

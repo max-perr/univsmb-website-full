@@ -9,7 +9,32 @@
 {% endblock %}
 
 {% block content %}
+
 <h2>Liste des règles Nat</h2>
+<table id="myTab" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Règles</th>
+        <th>IP adresse</th>
+        <th>port</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+    {% for row in items %}
+    
+        <tr>
+            <td>Le {{ row.nameNat }} - {{ row.ipAddress }}</td>
+            <td>{{ row.ipAddress}}</td>
+            <td>{{ row.port }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+<!--
 {% for row in items %}
 
 <div class="alert alert-primary" role="alert">
@@ -18,4 +43,5 @@
 </div>
 
 {% endfor %}
+-->
 {% endblock %}
